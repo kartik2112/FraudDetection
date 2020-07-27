@@ -39,6 +39,7 @@ pip install -r .\requirements.txt
     `mvn install`
 * Open cassandra instance by navigating to Cassandra binary's directory and executing: `.\bin\cassandra.bat -f`
 * In another window, again navigate to Cassandra binary's `bin` directory and execute: `cqlsh`. This will open the CQL prompt of Cassandra. Commands are very similar to SQL.
+
     Next, execute the following CQL scripts to configure the necessary tables:
     * CREATE KEYSPACE test
         WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
@@ -75,17 +76,21 @@ pip install -r .\requirements.txt
     * Open Kafka server by executing:
         `.\bin\windows\kafka-server-start.bat .\config\server.properties`
 1. Python Command Prompt 3 (pysparkXGBPredict)
-    Ensure that you run this from Anaconda Prompt (if you use conda) or the virtualenv you use. 
+    
+    Ensure that you run this from Anaconda Prompt (if you use conda) or the virtualenv you use.
+    
     This 3rd pipeline stage will receive enhanced transactions from Kafka topic `bank-sim-enh-trans-output`, perform encoding operations (using sklearn LabelEncoders used during training), run XGB prediction on these batches of feature vectors and output actual and predicted fraud values for each transaction.
     * Navigate to Spark directory: `C:\BigData\spark-3.0.0-bin-hadoop2.7`
     * Execute 
         `.\bin\spark-submit --master local[4] --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.0 "ABS_FILE_PATH\FraudDetection\pysparkXGBPredict.py"`
 1. Command Prompt 4 (CassandraInteract)
+    
     This 2nd pipeline stage will receive transactions from Kafka topic `bank-sim-transactions-input1`, adds records to Cassandra DB, executes aggregation queries and sends enhanced transactions to Kafka topic `bank-sim-enh-trans-output`.
     * Navigate to project's `javaStreamers` directory
     * Execute 
         `mvn exec:java -Dexec.mainClass=myapps.CassandraInteract`
 1. Command Prompt 5
+    
     This 1st pipeline stage will read the csv file: https://github.com/kartik2112/FraudDetection/blob/master/javaStreamers/bs140513_032310.csv and generate a stream of transactions by publishing them to Kafka topic `bank-sim-transactions-input1`
     * Navigate to project's `javaStreamers` directory
     * Execute 
