@@ -1,5 +1,9 @@
 # FraudDetection
 
+## Architecture
+
+<img src="Images/Architecture.PNG"/>
+
 ## Dependencies
 
 * [Kafka Binary](https://www.apache.org/dyn/closer.cgi?path=/kafka/2.5.0/kafka_2.12-2.5.0.tgz)
