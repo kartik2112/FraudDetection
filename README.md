@@ -2,7 +2,7 @@
 
 ## Architecture
 
-<img src="Images/Architecture.PNG"/>
+<img src="Images/Architecture Diagram.PNG"/>
 
 ## Dependencies
 
