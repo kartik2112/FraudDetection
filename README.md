@@ -110,10 +110,11 @@ pip install -r .\requirements.txt
 
 ## References
 
-* https://medium.com/@sushantgautam_930/simple-way-to-install-cassandra-in-windows-10-6497e93989e6
+* [Simple Way to Install Cassandra In Windows 10 | Medium](https://medium.com/@sushantgautam_930/simple-way-to-install-cassandra-in-windows-10-6497e93989e6)
 * https://docs.datastax.com/en/developer/java-driver/3.0/manual/statements/prepared/
 * https://kafka.apache.org/quickstart
 * https://changhsinlee.com/pyspark-udf/
-* https://medium.com/civis-analytics/prediction-at-scale-with-scikit-learn-and-pyspark-pandas-udfs-51d5ebfb2cd8
+* [Prediction at Scale with scikit-learn and PySpark Pandas UDFs](https://medium.com/civis-analytics/prediction-at-scale-with-scikit-learn-and-pyspark-pandas-udfs-51d5ebfb2cd8)
 * https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html#deploying
 * https://kontext.tech/column/spark/284/pyspark-convert-json-string-column-to-array-of-object-structtype-in-data-frame
+* [Kafka Streams : Real-time Stream Processing in Java | Github](https://github.com/LearningJournal/Kafka-Streams-Real-time-Stream-Processing)
