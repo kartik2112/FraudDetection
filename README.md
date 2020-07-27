@@ -41,29 +41,37 @@ pip install -r .\requirements.txt
 * In another window, again navigate to Cassandra binary's `bin` directory and execute: `cqlsh`. This will open the CQL prompt of Cassandra. Commands are very similar to SQL.
 
     Next, execute the following CQL scripts to configure the necessary tables:
-    * CREATE KEYSPACE test
+    * ```
+        CREATE KEYSPACE test
         WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
-    * USE test;
-    * CREATE TABLE transactions(
-        idx BIGINT,
-        step BIGINT,
-        customer TEXT,
-        age TEXT,
-        gender TEXT,
-        zipcodeOri TEXT,
-        merchant TEXT,
-        zipMerchant TEXT,
-        category TEXT,
-        amount DECIMAL,
-        fraud INT,
-        PRIMARY KEY(customer, step, idx));
-    * CREATE MATERIALIZED VIEW transactionsCustMerchs
-        AS SELECT * FROM transactions WHERE
-        merchant IS NOT NULL AND
-        customer IS NOT NULL AND
-        step IS NOT NULL AND
-        idx IS NOT NULL
-        PRIMARY KEY(merchant,customer,step,idx);
+        ```
+    * ```
+        USE test;
+        ```
+    * ```
+        CREATE TABLE transactions(
+            idx BIGINT,
+            step BIGINT,
+            customer TEXT,
+            age TEXT,
+            gender TEXT,
+            zipcodeOri TEXT,
+            merchant TEXT,
+            zipMerchant TEXT,
+            category TEXT,
+            amount DECIMAL,
+            fraud INT,
+            PRIMARY KEY(customer, step, idx));
+        ```
+    * ```
+        CREATE MATERIALIZED VIEW transactionsCustMerchs
+            AS SELECT * FROM transactions WHERE
+            merchant IS NOT NULL AND
+            customer IS NOT NULL AND
+            step IS NOT NULL AND
+            idx IS NOT NULL
+            PRIMARY KEY(merchant,customer,step,idx);
+        ```
 
 ## Execution Instructions
 
