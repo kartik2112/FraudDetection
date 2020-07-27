@@ -1,0 +1,35 @@
+ CREATE KEYSPACE test
+ WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
+ 
+ 
+ USE test;
+ 
+ 
+CREATE TABLE transactions(
+	idx BIGINT,
+	step BIGINT,
+	customer TEXT,
+	age TEXT,
+	gender TEXT,
+	zipcodeOri TEXT,
+	merchant TEXT,
+	zipMerchant TEXT,
+	category TEXT,
+	amount DECIMAL,
+	fraud INT,
+	PRIMARY KEY(customer, step, idx));
+	
+CREATE MATERIALIZED VIEW transactionsCustMerchs
+	AS SELECT * FROM transactions WHERE
+	merchant IS NOT NULL AND
+	customer IS NOT NULL AND
+	step IS NOT NULL AND
+	idx IS NOT NULL
+	PRIMARY KEY(merchant,customer,step,idx);
+
+
+CREATE INDEX step_idx ON transactions(step);
+CREATE INDEX cust_idx ON transactions(customer);
+
+
+INSERT INTO transactions (idx,step,customer,age,gender,zipcodeOri,merchant,zipMerchant,category,amount,fraud) values(0,0,'abcd','12','m','123123','asdfas','123123','asdfdsf',250.0,1)
